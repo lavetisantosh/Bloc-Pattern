@@ -1,5 +1,6 @@
-import 'package:bloc_example/cubit/counter_cubit.dart';
-import 'package:bloc_example/homescreen.dart';
+import 'package:bloc_example/api/apiservices.dart';
+import 'package:bloc_example/bloc/album_bloc.dart';
+import 'package:bloc_example/screens/albumscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,14 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CounterCubit(),
+      create: (context) => AlbumsBloc(albumsRepo: AlbumServices()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Sample',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen(),
+        home: const AlbumScreen(),
       ),
     );
   }
